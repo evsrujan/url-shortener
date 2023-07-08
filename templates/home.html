@@ -1,0 +1,70 @@
+{% load static %}
+{% static "images" as img %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'urltrim.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Mystery+Quest&family=Sacramento&display=swap" rel="stylesheet">
+
+    <!--<link rel="stylesheet" href="{% static 'js/first.js' %}"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urltrim</title>
+</head>
+<body >
+    <div class="profile">
+        <img src="{% static 'images/profilepic.png' %}" alt="profile-pic">
+    </div>
+    <div class="header">
+        <h1 class="heading">Urltrim</h1>
+    </div>
+    <div class="container">
+        <div class="for">
+        <h2>Lets be a barber for this URL</h2>
+            <form action="/urlshort/" method="post">
+                {% csrf_token %}
+                <div class="user-details">
+                    <div class="input-box">
+                        <input class="url" type="text" name="longurl" autocomplete="off" required>
+                        <label for="url" class="label-name">
+                            <span class="details">Original Url</span>
+                        </label>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="but">
+                    <input class="btn" type="submit" value="Trim it">
+                </div>
+            </div>
+            </form>
+    </div>
+
+    <div class="outdata">
+        <div class="short">
+        {% if data %}
+            <div class="data">
+                <input type="text" id="value" class="text" name="shorturl" value="{{data}}">
+                <button>
+                    <i id="copy" class="fa fa-clone"></i>
+                </button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+
+    <div class="footer">
+            <a class="footer-link" href="https://www.linkedin.com/in/eraganaboina-venkata-srujan-670602207/">LinkedIn</a>
+            <a class="footer-link" href="https://github.com/evsrujan">GitHub</a>
+            <p class="copyright" >© 2022 Eraganaboina Venkata Srujan.</p>
+    </div>
+
+    <script src="{% static 'js/first.js' %}"></script>
+</body>
+</html>
